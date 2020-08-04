@@ -44,6 +44,7 @@
      <Compile Include="Assets\AllStarCharacterLibray\Scripts\SkinnedMeshCombiner.cs" />
      <Compile Include="Assets\Scrips\Score.cs" />
      <Compile Include="Assets\Scrips\Type_map.cs" />
+     <Compile Include="Assets\Scrips\death_menu.cs" />
      <Compile Include="Assets\Scrips\move_cam_player.cs" />
      <Compile Include="Assets\Scrips\player_moto.cs" />
      <None Include="Assets\TainguyenGame\Game\CurveMaterials\Curved.shader" />

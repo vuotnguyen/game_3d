@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
+    public death_menu death_Menu;
     private float score = 0.0f;
 
     private int dificulLevel = 1;
@@ -23,6 +24,9 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDead){
+            return;
+        }
         if(score >= scoreToNextLevel)
             LevelUp();
             score +=Time.deltaTime * dificulLevel;
@@ -38,5 +42,10 @@ public class Score : MonoBehaviour
         GetComponent<player_moto>().SetSpeed(dificulLevel);
         Debug.Log(dificulLevel);
 
+    }
+    private bool isDead = false;
+    public void OnDeath(){
+        isDead = true;
+        death_Menu.toggleMenu(score);
     }
 }

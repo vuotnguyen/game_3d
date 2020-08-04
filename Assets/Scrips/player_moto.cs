@@ -13,6 +13,8 @@ public class player_moto : MonoBehaviour
     //trọng lượng
     private float time_ami = 3.0f;
 
+    private bool isDeath = false;
+
     Vector3 moveVector;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,9 @@ public class player_moto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if( isDeath){
+            return;
+        }
         moveVector = Vector3.zero; 
         if (Time.time < time_ami)
         {
@@ -48,6 +53,17 @@ public class player_moto : MonoBehaviour
 }
     public void SetSpeed(float modifi){
         speed = 5.0f + modifi;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit){
+        if(hit.point.z > transform.position.z + controller.radius){
+            Death();
+        }
+    }
+    private void Death(){
+        isDeath = true;
+        GetComponent<Score>().OnDeath();
+        Debug.Log("Death");
     }
 }
 
